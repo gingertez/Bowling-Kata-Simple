@@ -15,25 +15,30 @@ namespace BowlingConsole
             var frames = gameScore.Split('|');
             foreach(var frame in frames)
             {
-                score += ScoreFrame(frame);
+                score += FrameScore(frame);
             }
 
             return score;
         }
 
-        private int ScoreFrame(string frame)
+        private int FrameScore(string frame)
         {
+            if (IsSpare(frame))
+            {
+                return 10;
+            }
+
             var frameScore = 0;
 
-            foreach(var roll in frame)
+            foreach (var roll in frame)
             {
-                frameScore += GetRollValue(roll);
+                frameScore += RollValue(roll);
             }
 
             return frameScore;
         }
 
-        private int GetRollValue(char roll)
+        private int RollValue(char roll)
         {
             if (roll == 45)
             {
@@ -46,6 +51,11 @@ namespace BowlingConsole
             }
             
             return roll - 48;
+        }
+
+        private bool IsSpare(string frame)
+        {
+            return frame.Length > 1 && frame[1] == '/';
         }
     }
 }
