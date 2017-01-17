@@ -106,7 +106,7 @@ namespace BowlingConsole
             }
             else if (IsStrike(nextFrame))
             {
-                return 10 + RollOfFrame(_frameIdx + 2);
+                return 10 + (_frameIdx == 8 ? RollOfFrame(_frameIdx + 3) : RollOfFrame(_frameIdx + 2));
             }
             else
             {
