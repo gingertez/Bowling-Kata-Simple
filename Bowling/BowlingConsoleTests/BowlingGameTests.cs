@@ -16,6 +16,7 @@ namespace BowlingConsoleTests
         [TestCase("--", 0)]
         [TestCase("-6", 6)]
         [TestCase("4-", 4)]
+        [TestCase("X", 10)]
         public void ScoreGame(string gameScore, int expectedScore)
         {
             var game = new BowlingGame();
