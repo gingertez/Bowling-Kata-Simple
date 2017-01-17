@@ -8,14 +8,18 @@ namespace BowlingConsole
 {
     public class BowlingGame
     {
+        private string[] _frames;
+        private int _frameIdx = 0;
+
         public int ScoreGame(string gameScore)
         {
             var score = 0;
-
-            var frames = gameScore.Split('|');
-            foreach(var frame in frames)
+            
+            _frames = gameScore.Split('|');
+            foreach(var frame in _frames)
             {
                 score += FrameScore(frame);
+                _frameIdx++;
             }
 
             return score;
@@ -23,7 +27,13 @@ namespace BowlingConsole
 
         private int FrameScore(string frame)
         {
-            if (IsSpare(frame) || IsStrike(frame))
+            if (IsSpare(frame))
+            {
+                var nextRoll = RollValue(_frames[_frameIdx + 1][0]);
+                return 10 + nextRoll;
+            }
+
+            if (IsStrike(frame))
             {
                 return 10;
             }
