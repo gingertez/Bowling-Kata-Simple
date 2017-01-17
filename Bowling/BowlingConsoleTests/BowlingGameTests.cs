@@ -30,6 +30,10 @@ namespace BowlingConsoleTests
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|X||3/", 29)]
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|X||XX", 39)]
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|X|X||XX", 68)]
+        [TestCase("X|X|X|X|X|X|X|X|X|X||XX", 300)]
+        [TestCase("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||", 90)]
+        [TestCase("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5", 150)]
+        [TestCase("X|7/|9-|X|-8|8/|-6|X|X|X||81", 167)]
         public void ScoreGame(string gameScore, int expectedScore)
         {
             var game = new BowlingGame();
