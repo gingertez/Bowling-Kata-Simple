@@ -20,7 +20,7 @@ namespace BowlingConsole
             {
                 if (frame == "")
                 {
-                    break;
+                    continue;
                 }
                 score += FrameScore(frame);
                 _frameIdx++;
