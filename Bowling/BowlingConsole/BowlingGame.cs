@@ -42,10 +42,16 @@ namespace BowlingConsole
                 {
                     next2Rolls = 10;
 
-                    nextFrame = _frames[_frameIdx + 2];
+                    var nextFrame2 = _frames[_frameIdx + 2];
 
-                    next2Rolls += RollValue(nextFrame[0]);
-                    
+                    if (IsStrike(nextFrame2))
+                    {
+                        next2Rolls += 10;
+                    }
+                    else
+                    {
+                        next2Rolls += RollValue(nextFrame2[0]);
+                    }
                 }
                 else if (!IsSpare(nextFrame))
                 {
