@@ -11,44 +11,17 @@ namespace BowlingConsoleTests
     [TestFixture]
     public class BowlingGameTests
     {
-        [Test]
-        public void ScoreSingleNumericFrame()
+        [TestCase("12", 3)]
+        [TestCase("12|34", 10)]
+        [TestCase("--", 0)]
+        [TestCase("-6", 6)]
+        [TestCase("4-", 4)]
+        public void ScoreGame(string gameScore, int expectedScore)
         {
             var game = new BowlingGame();
+            var score = game.ScoreGame(gameScore);
 
-            var score = game.ScoreGame("12");
-
-            Assert.That(score, Is.EqualTo(3));
-        }
-
-        [Test]
-        public void ScoreMultipleNumericFrames()
-        {
-            var game = new BowlingGame();
-
-            var score = game.ScoreGame("12|34");
-
-            Assert.That(score, Is.EqualTo(10));
-        }
-
-        [Test]
-        public void ScoreGutterBalls()
-        {
-            var game = new BowlingGame();
-
-            var score = game.ScoreGame("--");
-
-            Assert.That(score, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void ScoreGutterBallsWithNumericFrame()
-        {
-            var game = new BowlingGame();
-
-            var score = game.ScoreGame("-6");
-
-            Assert.That(score, Is.EqualTo(6));
+            Assert.That(score, Is.EqualTo(expectedScore));
         }
     }
 }
