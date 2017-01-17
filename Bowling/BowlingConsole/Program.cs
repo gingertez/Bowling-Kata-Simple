@@ -10,6 +10,9 @@ namespace BowlingConsole
     {
         static void Main(string[] args)
         {
+            var game = new BowlingGame();
+            Console.WriteLine($"Score is {game.ScoreGame(args[0])}");
+            Console.ReadLine();
         }
     }
 }
