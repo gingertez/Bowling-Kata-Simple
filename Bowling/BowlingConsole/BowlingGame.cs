@@ -20,20 +20,43 @@ namespace BowlingConsole
             {
                 if (frame == "")
                 {
-                    continue;
+                    break;
                 }
                 score += FrameScore(frame);
                 _frameIdx++;
             }
 
+            if (_frames.Length > 10)
+            {
+                score += BonusRolls();
+            }
+
             return score;
         }
 
+        private int BonusRolls()
+        {
+            var frame = _frames.Last();
+            
+            if (IsSpare(frame))
+            {
+                return 10;
+            }
+            else
+            {
+                var bonus = 0;
+                for(var rollIdx = 0; rollIdx < _frames[11].Length; rollIdx++)
+                {
+                    bonus += RollOfFrame(11, rollIdx);
+                }
+                return bonus;
+            }
+        }
         private int FrameScore(string frame)
         {
             if (IsSpare(frame))
             {
-                return 10 + FirstRollOfFrame(_frameIdx + 1);
+                return 10 + RollOfFrame(_frameIdx + 1);
             }
             else if (IsStrike(frame))
             {
@@ -60,14 +83,14 @@ namespace BowlingConsole
             return roll - 48;
         }
 
-        private int FirstRollOfFrame(int frameIndex)
+        private int RollOfFrame(int frameIndex, int rollIndex = 0)
         {
             var nextFrame = _frames[frameIndex];
             if (nextFrame == "")
             {
                 return 0;
             }
-            return IsStrike(nextFrame) ? 10 : RollValue(nextFrame[0]);
+            return IsStrike(nextFrame[rollIndex].ToString()) ? 10 : RollValue(nextFrame[rollIndex]);
         }
 
         private int NextTwoRolls()
@@ -83,7 +106,7 @@ namespace BowlingConsole
             }
             else if (IsStrike(nextFrame))
             {
-                return 10 + FirstRollOfFrame(_frameIdx + 2);
+                return 10 + RollOfFrame(_frameIdx + 2);
             }
             else
             {
