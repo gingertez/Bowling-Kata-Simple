@@ -26,6 +26,7 @@ namespace BowlingConsoleTests
         [TestCase("3/|X|5-", 40)]
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|1-||", 10)]
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|1/||2", 21)]
+        [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|X||23", 24)]
         public void ScoreGame(string gameScore, int expectedScore)
         {
             var game = new BowlingGame();
