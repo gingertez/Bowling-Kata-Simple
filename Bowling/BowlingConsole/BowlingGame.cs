@@ -29,7 +29,17 @@ namespace BowlingConsole
         {
             if (IsSpare(frame))
             {
-                var nextRoll = RollValue(_frames[_frameIdx + 1][0]);
+                int nextRoll = 0;
+                var nextFrame = _frames[_frameIdx + 1];
+                if (IsStrike(nextFrame))
+                {
+                    nextRoll += 10;
+                }
+                else
+                {
+                    nextRoll += RollValue(_frames[_frameIdx + 1][0]);
+                }
+                
                 return 10 + nextRoll;
             }
 
