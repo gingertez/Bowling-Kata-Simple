@@ -24,6 +24,7 @@ namespace BowlingConsoleTests
         [TestCase("3/|4-", 18)]
         [TestCase("3/|4/|5-", 34)]
         [TestCase("3/|X|5-", 40)]
+        [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|1-||", 10)]
         public void ScoreGame(string gameScore, int expectedScore)
         {
             var game = new BowlingGame();
