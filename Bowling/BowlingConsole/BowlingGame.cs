@@ -29,60 +29,21 @@ namespace BowlingConsole
         {
             if (IsSpare(frame))
             {
-                int nextRoll = 0;
-                var nextFrame = _frames[_frameIdx + 1];
-                if (IsStrike(nextFrame))
-                {
-                    nextRoll += 10;
-                }
-                else
-                {
-                    nextRoll += RollValue(_frames[_frameIdx + 1][0]);
-                }
-                
-                return 10 + nextRoll;
+                return 10 + FirstRollOfFrame(_frameIdx + 1);
             }
-
-            if (IsStrike(frame))
+            else if (IsStrike(frame))
             {
-                int next2Rolls = 0;
-                var nextFrame = _frames[_frameIdx + 1];
-
-                if (IsStrike(nextFrame))
-                {
-                    next2Rolls = 10;
-
-                    var nextFrame2 = _frames[_frameIdx + 2];
-
-                    if (IsStrike(nextFrame2))
-                    {
-                        next2Rolls += 10;
-                    }
-                    else
-                    {
-                        next2Rolls += RollValue(nextFrame2[0]);
-                    }
-                }
-                else if (IsSpare(nextFrame))
-                {
-                    next2Rolls = 10;
-                }
-                else
-                {
-                    next2Rolls = FrameScore(nextFrame);
-                }
-
-                return 10 + next2Rolls;
+                return 10 + NextTwoRolls();
             }
-
-            var frameScore = 0;
-
-            foreach (var roll in frame)
+            else
             {
-                frameScore += RollValue(roll);
+                var frameScore = 0;
+                foreach (var roll in frame)
+                {
+                    frameScore += RollValue(roll);
+                }
+                return frameScore;
             }
-
-            return frameScore;
         }
 
         private int RollValue(char roll)
@@ -93,6 +54,30 @@ namespace BowlingConsole
             }
             
             return roll - 48;
+        }
+
+        private int FirstRollOfFrame(int frameIndex)
+        {
+            var nextFrame = _frames[frameIndex];
+            return IsStrike(nextFrame) ? 10 : RollValue(nextFrame[0]);
+        }
+
+        private int NextTwoRolls()
+        {
+            var nextFrame = _frames[_frameIdx + 1];
+
+            if (IsSpare(nextFrame))
+            {
+                return 10;
+            }
+            else if (IsStrike(nextFrame))
+            {
+                return 10 + FirstRollOfFrame(_frameIdx + 2);
+            }
+            else
+            {
+                return FrameScore(nextFrame);
+            }
         }
 
         private bool IsSpare(string frame)
