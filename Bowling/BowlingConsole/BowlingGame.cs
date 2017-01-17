@@ -25,15 +25,27 @@ namespace BowlingConsole
         {
             var frameScore = 0;
 
-            frameScore += GetRollValue(frame[0]);
-            frameScore += GetRollValue(frame[1]);
+            foreach(var roll in frame)
+            {
+                frameScore += GetRollValue(roll);
+            }
 
             return frameScore;
         }
 
         private int GetRollValue(char roll)
         {
-            return roll == 45 ? 0 : roll - 48;
+            if (roll == 45)
+            {
+                return 0;
+            }
+
+            if (roll == 88)
+            {
+                return 10;
+            }
+            
+            return roll - 48;
         }
     }
 }
