@@ -38,7 +38,10 @@ namespace BowlingConsole
                 var next2Rolls = 0;
                 var nextFrame = _frames[_frameIdx + 1];
 
-                next2Rolls = FrameScore(nextFrame);
+                if (!IsStrike(nextFrame) && !IsSpare(nextFrame))
+                {
+                    next2Rolls = FrameScore(nextFrame);
+                }
 
                 return 10 + next2Rolls;
             }
