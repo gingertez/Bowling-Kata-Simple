@@ -16,8 +16,8 @@ namespace BowlingConsoleTests
         [TestCase("--", 0)]
         [TestCase("-6", 6)]
         [TestCase("4-", 4)]
-        [TestCase("X", 10)]
-        [TestCase("63|X", 19)]
+        [TestCase("X|34", 24)]
+        [TestCase("63|X|34", 33)]
         [TestCase("3/|4-", 18)]
         public void ScoreGame(string gameScore, int expectedScore)
         {
