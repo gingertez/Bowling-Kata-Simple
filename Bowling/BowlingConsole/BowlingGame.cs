@@ -8,5 +8,9 @@ namespace BowlingConsole
 {
     public class BowlingGame
     {
+        public int ScoreGame(string gameScore)
+        {
+            return 0;
+        }
     }
 }
