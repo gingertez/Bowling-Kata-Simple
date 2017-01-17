@@ -18,6 +18,10 @@ namespace BowlingConsole
             _frames = gameScore.Split('|');
             foreach(var frame in _frames)
             {
+                if (frame == "")
+                {
+                    break;
+                }
                 score += FrameScore(frame);
                 _frameIdx++;
             }
@@ -59,13 +63,20 @@ namespace BowlingConsole
         private int FirstRollOfFrame(int frameIndex)
         {
             var nextFrame = _frames[frameIndex];
+            if (nextFrame == "")
+            {
+                return 0;
+            }
             return IsStrike(nextFrame) ? 10 : RollValue(nextFrame[0]);
         }
 
         private int NextTwoRolls()
         {
             var nextFrame = _frames[_frameIdx + 1];
-
+            if (nextFrame == "")
+            {
+                return 0;
+            }
             if (IsSpare(nextFrame))
             {
                 return 10;
