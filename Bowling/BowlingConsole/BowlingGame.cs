@@ -12,10 +12,23 @@ namespace BowlingConsole
         {
             var score = 0;
 
-            score += int.Parse(gameScore[0].ToString());
-            score += int.Parse(gameScore[1].ToString());
+            var frames = gameScore.Split('|');
+            foreach(var frame in frames)
+            {
+                score += ScoreFrame(frame);
+            }
 
             return score;
+        }
+
+        private int ScoreFrame(string frame)
+        {
+            var frameScore = 0;
+
+            frameScore += int.Parse(frame[0].ToString());
+            frameScore += int.Parse(frame[1].ToString());
+
+            return frameScore;
         }
     }
 }
