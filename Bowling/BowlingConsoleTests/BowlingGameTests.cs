@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using BowlingConsole;
 
 namespace BowlingConsoleTests
@@ -35,6 +36,13 @@ namespace BowlingConsoleTests
             var score = game.ScoreGame(gameScore);
 
             Assert.That(score, Is.EqualTo(expectedScore));
+        }
+
+        [Test]
+        public void ErrorThrownIfInvalidCharacterPresent()
+        {
+            var game = new BowlingGame();
+            Assert.Throws<InvalidOperationException>(() => game.ScoreGame("X|23|A/"));
         }
     }
 }
