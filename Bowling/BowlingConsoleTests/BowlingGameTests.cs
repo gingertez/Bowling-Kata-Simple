@@ -28,6 +28,8 @@ namespace BowlingConsoleTests
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|1/||2", 21)]
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|X||23", 24)]
         [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|X||3/", 29)]
+        [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|1-|X||XX", 39)]
+        [TestCase("1-|1-|1-|1-|1-|1-|1-|1-|X|X||XX", 68)]
         public void ScoreGame(string gameScore, int expectedScore)
         {
             var game = new BowlingGame();
