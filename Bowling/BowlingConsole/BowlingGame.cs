@@ -25,10 +25,15 @@ namespace BowlingConsole
         {
             var frameScore = 0;
 
-            frameScore += int.Parse(frame[0].ToString());
-            frameScore += int.Parse(frame[1].ToString());
+            frameScore += GetRollValue(frame[0]);
+            frameScore += GetRollValue(frame[1]);
 
             return frameScore;
+        }
+
+        private int GetRollValue(char roll)
+        {
+            return roll == '-' ? 0 : int.Parse(roll.ToString());
         }
     }
 }
