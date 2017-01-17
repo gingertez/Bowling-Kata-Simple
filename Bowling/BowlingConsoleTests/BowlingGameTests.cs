@@ -40,5 +40,15 @@ namespace BowlingConsoleTests
 
             Assert.That(score, Is.EqualTo(0));
         }
+
+        [Test]
+        public void ScoreGutterBallsWithNumericFrame()
+        {
+            var game = new BowlingGame();
+
+            var score = game.ScoreGame("-6");
+
+            Assert.That(score, Is.EqualTo(6));
+        }
     }
 }
