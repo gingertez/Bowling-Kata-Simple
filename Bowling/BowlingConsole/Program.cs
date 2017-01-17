@@ -11,7 +11,14 @@ namespace BowlingConsole
         static void Main(string[] args)
         {
             var game = new BowlingGame();
-            Console.WriteLine($"Score is {game.ScoreGame(args[0])}");
+            try
+            {
+                Console.WriteLine($"Score is {game.ScoreGame(args[0])}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error calculating score: {ex.Message}");
+            }
             Console.ReadLine();
         }
     }

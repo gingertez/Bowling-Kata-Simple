@@ -42,7 +42,7 @@ namespace BowlingConsoleTests
         public void ErrorThrownIfInvalidCharacterPresent()
         {
             var game = new BowlingGame();
-            Assert.Throws<InvalidOperationException>(() => game.ScoreGame("X|23|A/"));
+            Assert.Throws<InvalidOperationException>(() => game.ScoreGame("X|23|A1"));
         }
     }
 }

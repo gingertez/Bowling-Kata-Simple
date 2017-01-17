@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace BowlingConsole
 {
@@ -75,7 +76,12 @@ namespace BowlingConsole
             {
                 return 0;
             }
-            
+         
+            if (roll < 48 || roll > 57)
+            {
+                throw new InvalidOperationException("Invalid character found in game score");
+            }   
+
             return roll - 48;
         }
 
