@@ -10,7 +10,12 @@ namespace BowlingConsole
     {
         public int ScoreGame(string gameScore)
         {
-            return 0;
+            var score = 0;
+
+            score += int.Parse(gameScore[0].ToString());
+            score += int.Parse(gameScore[1].ToString());
+
+            return score;
         }
     }
 }
