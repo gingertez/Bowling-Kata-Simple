@@ -33,7 +33,7 @@ namespace BowlingConsole
 
         private int GetRollValue(char roll)
         {
-            return roll == '-' ? 0 : int.Parse(roll.ToString());
+            return roll == 45 ? 0 : roll - 48;
         }
     }
 }
