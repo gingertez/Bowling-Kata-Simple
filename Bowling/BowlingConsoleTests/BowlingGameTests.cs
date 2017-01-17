@@ -30,5 +30,15 @@ namespace BowlingConsoleTests
 
             Assert.That(score, Is.EqualTo(10));
         }
+
+        [Test]
+        public void ScoreGutterBalls()
+        {
+            var game = new BowlingGame();
+
+            var score = game.ScoreGame("--");
+
+            Assert.That(score, Is.EqualTo(0));
+        }
     }
 }
