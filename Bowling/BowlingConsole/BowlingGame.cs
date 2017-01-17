@@ -23,7 +23,7 @@ namespace BowlingConsole
 
         private int FrameScore(string frame)
         {
-            if (IsSpare(frame))
+            if (IsSpare(frame) || IsStrike(frame))
             {
                 return 10;
             }
@@ -44,18 +44,18 @@ namespace BowlingConsole
             {
                 return 0;
             }
-
-            if (roll == 88)
-            {
-                return 10;
-            }
             
             return roll - 48;
         }
 
         private bool IsSpare(string frame)
         {
-            return frame.Length > 1 && frame[1] == '/';
+            return frame.Length > 1 && frame[1] == 47;
+        }
+
+        private bool IsStrike(string frame)
+        {
+            return frame.Length == 1 && frame[0] == 88;
         }
     }
 }
