@@ -53,7 +53,11 @@ namespace BowlingConsole
                         next2Rolls += RollValue(nextFrame2[0]);
                     }
                 }
-                else if (!IsSpare(nextFrame))
+                else if (IsSpare(nextFrame))
+                {
+                    next2Rolls = 10;
+                }
+                else
                 {
                     next2Rolls = FrameScore(nextFrame);
                 }
